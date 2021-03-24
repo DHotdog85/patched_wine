@@ -1,0 +1,10 @@
+--- dlls/mmdevapi/audiovolume.c
++++ dlls/mmdevapi/audiovolume.c
+@@ -33,6 +33,7 @@
+ #include "audioclient.h"
+ #include "endpointvolume.h"
+ #include "audiopolicy.h"
++#include "spatialaudioclient.h"
+ 
+ #include "mmdevapi.h"
+ 

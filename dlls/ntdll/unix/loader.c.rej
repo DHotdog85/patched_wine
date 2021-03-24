@@ -1,0 +1,10 @@
+--- dlls/ntdll/unix/loader.c
++++ dlls/ntdll/unix/loader.c
+@@ -1566,6 +1567,7 @@ static void start_main_thread(void)
+     dbg_init();
+     server_init_process();
+     startup_info_size = server_init_thread( teb->Peb, &suspend );
++    fsync_init();
+     esync_init();
+     virtual_map_user_shared_data();
+     init_cpu_info();

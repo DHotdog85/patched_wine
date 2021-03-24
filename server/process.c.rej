@@ -1,0 +1,12 @@
+--- server/process.c
++++ server/process.c
+@@ -1401,6 +1405,9 @@ DECL_HANDLER(init_process_done)
+     if (req->gui) process->idle_event = create_event( NULL, NULL, 0, 1, 0, NULL );
+     if (process->debugger) set_process_debug_flag( process, 1 );
+     reply->suspend = (current->suspend || process->suspend);
++
++    if (have_cpu_override)
++        process->cpu_override = *cpu_override;
+ }
+ 
+ /* open a handle to a process */

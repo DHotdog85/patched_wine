@@ -1,0 +1,15 @@
+--- dlls/ntdll/unix/system.c
++++ dlls/ntdll/unix/system.c
+@@ -166,6 +167,12 @@ struct smbios_boot_info
+ #define RSMB 0x52534D42
+ 
+ static SYSTEM_CPU_INFORMATION cpu_info;
++static struct
++{
++    struct cpu_topology_override mapping;
++    BOOL smt;
++}
++cpu_override;
+ 
+ /*******************************************************************************
+  * Architecture specific feature detection for CPUs

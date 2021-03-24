@@ -1,0 +1,19 @@
+--- dlls/wmphoto/Makefile.in
++++ dlls/wmphoto/Makefile.in
+@@ -1,4 +1,5 @@
+ MODULE = wmphoto.dll
++IMPORTS = windowscodecs uuid kernelbase
+ 
+ EXTRADLLFLAGS = -mno-cygwin
+ 
+--- dlls/wmphoto/Makefile.in
++++ dlls/wmphoto/Makefile.in
+@@ -1,7 +1,7 @@
+ MODULE = wmphoto.dll
+ IMPORTS = windowscodecs uuid kernelbase
+ 
+-EXTRADLLFLAGS = -mno-cygwin
++EXTRAINCL = $(JXRLIB_CFLAGS)
+ 
+ C_SRCS = main.c
+ 

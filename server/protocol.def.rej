@@ -1,0 +1,10 @@
+--- server/protocol.def
++++ server/protocol.def
+@@ -883,6 +889,7 @@ typedef struct
+     mod_handle_t module;       /* main module base address */
+     client_ptr_t ldt_copy;     /* address of LDT copy (in thread address space) */
+     client_ptr_t entry;        /* process entry point */
++    VARARG(cpu_override,cpu_topology_override); /* Overridden CPUs to host CPUs mapping. */
+ @REPLY
+     int          suspend;      /* is process suspended? */
+ @END

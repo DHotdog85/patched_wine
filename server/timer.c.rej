@@ -1,0 +1,17 @@
+--- server/timer.c
++++ server/timer.c
+@@ -51,12 +52,14 @@ struct timer
+     client_ptr_t         callback;  /* callback APC function */
+     client_ptr_t         arg;       /* callback argument */
+     int                  esync_fd;  /* esync file descriptor */
++    unsigned int         fsync_idx; /* fsync shm index */
+ };
+ 
+ static void timer_dump( struct object *obj, int verbose );
+ static struct object_type *timer_get_type( struct object *obj );
+ static int timer_signaled( struct object *obj, struct wait_queue_entry *entry );
+ static int timer_get_esync_fd( struct object *obj, enum esync_type *type );
++static unsigned int timer_get_fsync_idx( struct object *obj, enum fsync_type *type );
+ static void timer_satisfied( struct object *obj, struct wait_queue_entry *entry );
+ static unsigned int timer_map_access( struct object *obj, unsigned int access );
+ static void timer_destroy( struct object *obj );

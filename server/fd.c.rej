@@ -1,0 +1,18 @@
+--- server/fd.c
++++ server/fd.c
+@@ -2250,6 +2268,15 @@ int default_fd_get_esync_fd( struct object *obj, enum esync_type *type )
+     return ret;
+ }
+ 
++unsigned int default_fd_get_fsync_idx( struct object *obj, enum fsync_type *type )
++{
++    struct fd *fd = get_obj_fd( obj );
++    unsigned int ret = fd->fsync_idx;
++    *type = FSYNC_MANUAL_SERVER;
++    release_object( fd );
++    return ret;
++}
++
+ /* default map_access() routine for objects that behave like an fd */
+ unsigned int default_fd_map_access( struct object *obj, unsigned int access )
+ {
